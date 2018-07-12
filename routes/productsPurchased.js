@@ -20,7 +20,7 @@ router.post('/',function(req, res) {
           }
           else if(rows.length>0)
           {
-            res.json({"message":"The action was successful","products":rows});
+            res.json({"message":"The action was successful", "products":rows});
           }
           else
           {
