@@ -1,0 +1,157 @@
+{
+  "config": {
+    "target": "http://52.72.97.197:3000",
+    "phases": [
+      {"duration": 120, "arrivalCount": 60}
+    ],
+    "payload": [
+    {
+      "path": "UserData.csv",
+      "fields": ["fname","lname","address","city","state","zip","email","username", "password"],
+      "order": "sequence"
+    },
+    {
+      "path": "output.csv",
+      "fields": ["asin"],
+      "order": "sequence"
+    },
+    {
+      "path": "search.csv",
+      "fields": ["keyword"],
+      "order": "sequence"
+    },
+    {
+      "path": "asin.csv",
+      "fields": ["code"],
+      "order": "sequence"
+  }
+  ]	
+  },
+  "scenarios": [
+    {
+      "name": "login not registered",
+      "flow": [
+	{"post": {
+      "url": "/viewProducts",
+      "json": {"keyword":"{{{keyword}}}"}
+     }
+    },
+       {"post": {
+        "url": "/buyProducts",
+        "json": {"products":[{"asin":"{{{asin}}}"}, {"asin":"{{{asin}}}"}, {"asin":"{{{asin}}}"}]},
+        "match":{
+          "json":"$.message",
+          "value":"You are not currently logged in"
+        }
+       }
+     },
+	{"post": {
+        "url": "/getRecommendations",
+        "json": {"asin":"{{{asin}}}"},
+        "match":{
+          "json":"$.message",
+          "value":"You are not currently logged in"
+        }
+       }
+     },
+      {"post": {
+          "url": "/login",
+          "json": {"username":"{{{username}}}","password":"{{{password}}}"},
+          "match":{
+            "json":"$.message",
+            "value":"Welcome {{{fname}}}"
+          }
+         }
+       },
+	{"post": {
+        "url": "/buyProducts",
+        "json": {"products":[{"asin":"{{{asin}}}"}, {"asin":"{{{code}}}"}]},
+        "match":{
+          "json":"$.message",
+          "value":"The action was successful"
+        }
+       }
+     },
+	{"post": {
+        "url": "/buyProducts",
+        "json": {"products":[{"asin":"{{{asin}}}"}]},
+        "match":{
+          "json":"$.message",
+          "value":"The action was successful"
+        }
+       }
+     },
+	{"post": {
+        "url": "/productsPurchased",
+        "json": {"username":"{{{username}}}"},
+        "match":{
+          "json":"$.message",
+          "value":"You must be an admin to perform this action"
+        }
+       }
+     },
+	{"post": {
+        "url": "/getRecommendations",
+        "json": {"asin":"12345"},
+        "match":{
+          "json":"$.message",
+          "value":"There are no recommendations for that product"
+        }
+       }
+     },
+	{"post": {
+        "url": "/getRecommendations",
+        "json": {"asin":"{{{asin}}}"},
+        "match":{
+          "json":"$.message",
+          "value":"The action was successful"
+        }
+       }
+     },
+	{"post": {
+        "url": "/logout",
+        "match":{
+          "json":"$.message",
+          "value":"You have been successfully logged out"
+        }
+       }
+     },
+	{"post": {
+        "url": "/productsPurchased",
+        "json": {"username":"{{{username}}}"},
+        "match":{
+          "json":"$.message",
+          "value":"You are not currently logged in"
+        }
+       }
+     },
+	  {"post": {
+         "url": "/login",
+         "json": {"username":"jadmin","password":"admin"},
+         "match":{
+           "json":"$.message",
+           "value":"Welcome Jenny"
+         }
+        }
+      },
+      {"post": {
+        "url": "/productsPurchased",
+        "json": {"username":"{{{username}}}"},
+        "match":{
+          "json":"$.message",
+          "value":"The action was successful"
+        }
+       }
+     },
+	{"post": {
+        "url": "/logout",
+        "match":{
+          "json":"$.message",
+          "value":"You have been successfully logged out"
+        }
+       }
+     }
+     ]
+    }
+  ]
+}

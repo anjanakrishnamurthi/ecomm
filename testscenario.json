@@ -1,0 +1,27 @@
+{
+  "config": {
+    "target": "http://54.174.218.202:3000",
+    "phases": [
+      {"duration": 1, "arrivalCount": 100}
+    ],
+    "payload": [
+	{
+      "path": "keyword.csv",
+      "fields": ["keyword"],
+      "order": "sequence"
+    },
+  ]
+  },
+  "scenarios": [
+    {
+      "name": "Load Test",
+      "flow": [
+    {"post": {
+      "url": "/viewProducts",
+      "json": {"keyword":"{{{keyword}}}"},
+     }
+    },
+     ]
+    }
+  ]
+}

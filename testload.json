@@ -1,0 +1,59 @@
+{
+  "config": {
+    "target": "http://54.89.223.15:3000",
+    "phases": [
+      {"duration": 20, "arrivalCount": 100}
+    ],
+    "payload": [
+    {
+      "path": "testproduct.csv",
+      "fields": ["asin","productName","productDescription","group"],
+      "order": "sequence"
+    },
+	{
+      "path": "keyword.csv",
+      "fields": ["keyword"],
+      "order": "sequence"
+    },
+  ]
+  },
+  "scenarios": [
+    {
+      "name": "Load Test",
+      "flow": [
+     {"post": {
+         "url": "/login",
+         "json": {"username":"jadmin","password":"admin"},
+         "match":{
+           "json":"$.message",
+           "value":"Welcome Jenny"
+         }
+        }
+      },
+      {"post": {
+        "url": "/addProducts",
+        "json": {"asin":"{{{asin}}}", "productName":"{{productName}}", "productDescription":"{{{productDescription}}}","group":"{{{group}}}"},
+        "match":{
+          "json":"$.message",
+          "value":"{{{productName}}} was successfully added to the system"
+        }
+       }
+     },
+
+    {"post": {
+      "url": "/viewProducts",
+      "json": {"keyword":"{{{keyword}}}"},
+     }
+    },
+	{"post": {
+        "url": "/logout",
+        "match":{
+          "json":"$.message",
+          "value":"You have been successfully logged out"
+        }
+       }
+     },
+     ]
+    }
+  ]
+}

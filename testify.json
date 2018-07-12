@@ -1,0 +1,31 @@
+{
+  "config": {
+    "target": "http://34.204.42.70:3000",
+    "phases": [
+      {"duration": 1, "arrivalCount": 100}
+    ],
+    "payload": [
+    {
+      "path": "testproduct.csv",
+      "fields": ["asin","productName","productDescription","group"],
+      "order": "sequence"
+    },
+	{
+      "path": "keyword.csv",
+      "fields": ["keyword"],
+      "order": "sequence"
+    },
+  ]
+  },
+  "scenarios": [
+    {
+      "name": "Load Test",
+      "flow": [
+    {"post": {
+      "url": "/viewProducts"
+     }
+    }
+     ]
+    }
+  ]
+}

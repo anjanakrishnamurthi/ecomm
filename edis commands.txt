@@ -1,0 +1,97 @@
+use edisecommerce
+
+select * from login;
+
+select * from login 
+
+delete from login
+
+
+insert into lof
+
+
+delete from login where fname=''
+
+select * from login where fname='Jocelyn'
+
+SELECT asin,productName FROM products
+
+SELECT * FROM products where asin='0399232001'
+
+select * from login;
+
+desc login;
+
+show create table products;
+
+drop table login
+
+desc login
+
+SELECT asin,productName FROM products WHERE (match (productName,productDescription) against ('BALLET'));
+
+ALTER TABLE `products` ADD FULLTEXT INDEX `together` (`productName`,`productDescription`);
+
+ALTER TABLE `products`
+ADD FULLTEXT INDEX `perfindex` (`productName`);
+
+ALTER TABLE `products`
+ADD FULLTEXT INDEX `descindex` (`productDescription`);
+
+ ALTER TABLE products DROP INDEX descindex;
+ 
+ 
+ use edisecommerce
+ desc login;
+ load data local infile 'D:/Summer/EDIS/assignment2/UserData.csv' into table login fields terminated by ',';
+ select count(*) from login;
+ ALTER TABLE login MODIFY COLUMN zip VARCHAR(255);
+ 
+ desc login
+ 
+ ALTER TABLE login DROP id;
+ 
+ ALTER TABLE login MODIFY state NULL;
+ 
+ ALTER TABLE login ALTER state varchar NULL
+ 
+ALTER TABLE login COLUMN state VARCHAR(255) NULL
+
+use edisecommerce
+ 
+create table login (fname varchar(400));
+
+ALTER TABLE login ADD role VARCHAR(50);
+
+update login set role='admin' where username='jadmin'
+
+delete from login where password='TDT12VLB3JUPSV\r'
+
+ALTER TABLE login ADD UNIQUE (username);
+
+desc products
+
+select count(*) from login;
+
+LOAD DATA LOCAL INFILE 'D:/Summer/EDIS/assignment2/UserData.csv' INTO TABLE `login`
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\r'
+
+insert into login(fname,lname,username,password) values ('Jenny','Admin','jadmin','admin')
+
+create table shophistory(
+asin varchar(50),
+username varchar(400)
+)
+create table recommendations(
+bought varchar(50),
+alsobought varchar(50)
+)
+
+desc shophistory
+desc login
+desc recommendations
+
+select * from shophistory
+
+select * from recommendations

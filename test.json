@@ -1,0 +1,28 @@
+{
+  "config": {
+    "target": "http://localhost:3000",
+    "phases": [
+      {"duration": 1, "arrivalCount": 1}
+    ],
+    "payload": [
+    {
+      "path": "UserData.csv",
+      "fields": ["fname","lname","address","city","state","zip","email","username", "password"],
+      "order": "sequence"
+    }
+  ]
+  },
+  "scenarios": [
+    {
+       {"post": {
+         "url": "/registerUser",
+         "json": {"fname":"{{{fname}}}", "lname":"{{lname}}", "address":"{{{address}}}","city":"{{{city}}}","state":"{{{state}}}", "zip":"{{{zip}}}", "email":"{{{email}}}","username":"{{{ username }}}","password":"{{ password }}"},
+         "match":{
+           "json":"$.message",
+           "value":"{{{fname}}} was registered successfully"
+         }
+        }
+      },
+	}
+  ]
+}
