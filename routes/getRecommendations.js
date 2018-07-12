@@ -22,7 +22,7 @@ if(req.session.username)
     }
     else
     {
-      res.json({"message": "There are no recommendations for that product"});
+      res.json({"message":"There are no recommendations for that product"});
     }
     });
     dbconnect.release();
