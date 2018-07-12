@@ -87,11 +87,11 @@ if(isChanged) {
          dbconnect.query(queryset,function(err,rows){
                  if(err)
                  {
-                     res.json({'message':'The input you provided is not valid'});
+                     res.json({"message":"The input you provided is not valid"});
                  }
                    else
                     {
-                       res.json({'message':fname +' your information was successfully updated'});
+                       res.json({"message":fname +" your information was successfully updated"});
                     }
              });
                        dbconnect.release();
@@ -104,7 +104,7 @@ if(isChanged) {
 }
 else
 {
-res.json({'message':'You are not currently logged in'});
+res.json({"message":"You are not currently logged in"});
 }
 });
 module.exports = router;
