@@ -62,7 +62,7 @@ router.post('/',function(req, res) {
     }// end session validation
     else
     {
-      res.json({'message':'You are not currenlty logged in'});
+      res.json({'message':'You are not currently logged in'});
     }
 
 });//end router
