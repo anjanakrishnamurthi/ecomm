@@ -47,7 +47,7 @@ router.post('/',function(req, res) {
               }
               else
                 {
-                    res.json({"message":"The action was successful","user":rows});
+                    res.json({"message":"The action was successful", "user":rows});
                 }
             });
             dbconnect.release();
