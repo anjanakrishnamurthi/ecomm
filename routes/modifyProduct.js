@@ -18,7 +18,7 @@ router.post('/',function(req, res) {
         if(typeof asin === "undefined" || typeof productName === "undefined" || typeof productDescription === "undefined"
          || typeof group === "undefined" || asin.length == 0 || productName.length ==0 ||productDescription.length == 0)
         {
-          res.json({'message':'The input you provided is not valid'});
+          res.json({"message":"The input you provided is not valid"});
         }
         else
         {
@@ -37,15 +37,15 @@ router.post('/',function(req, res) {
       {
           if (err)
           {
-          res.json({'message':'The input you provided is not valid'});
+          res.json({"message":"The input you provided is not valid"});
           }
          else if (rows.length == 0)
          {
-           res.json({'message':'The input you provided is not valid'});
+           res.json({"message":"The input you provided is not valid"});
          }
          else
           {
-          res.json({'message':productName+' was successfully updated'});
+          res.json({"message":productName+" was successfully updated"});
           }
         });
         dbconnect.release();
@@ -53,12 +53,12 @@ router.post('/',function(req, res) {
       }// end role validation
       else
       {
-        res.json({'message':'You must be an admin to perform this action'});
+        res.json({"message":"You must be an admin to perform this action"});
       }
     }// end session validation
     else
     {
-      res.json({'message':'You are not currently logged in'});
+      res.json({"message":"You are not currently logged in"});
     }
 
 });//end router
