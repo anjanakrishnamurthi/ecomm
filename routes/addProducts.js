@@ -17,7 +17,7 @@ if(req.session.username)
     {
       if(typeof asin === "undefined" || typeof productName === "undefined" || typeof productDescription === "undefined" || typeof group === "undefined")
       {
-        res.json({'message':'The input you provided is not valid'});
+        res.json({"message":"The input you provided is not valid"});
       }
       else
       {
@@ -32,11 +32,11 @@ if(req.session.username)
            if (err)
              {
                console.log(err);
-               res.json({'message':'The input you provided is not valid'});
+               res.json({"message":"The input you provided is not valid"});
              }
              else
              {
-               res.json({'message':productName+' was successfully added to the system'});
+               res.json({"message":productName+" was successfully added to the system"});
              }
 
          });
@@ -46,13 +46,13 @@ if(req.session.username)
     }//end if
     else
     {
-      res.json({'message':'You must be an admin to perform this action'});
+      res.json({"message":"You must be an admin to perform this action"});
     }//end else
 
 }//end session validation
 else
 {
-  res.json({'message':'You are not currently logged in'});
+  res.json({"message":"You are not currently logged in"});
 }
 
 
