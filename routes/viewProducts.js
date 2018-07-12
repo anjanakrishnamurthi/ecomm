@@ -51,11 +51,11 @@ router.post('/',function(req, res) {
       }
       if (rows.length == 0)
       {
-        res.json({'message':'There are no products that match that criteria'});
+        res.json({"message":"There are no products that match that criteria"});
       }
       else
       {
-        res.json({'product':rows});
+        res.json({"product":rows});
       }
 
  	  });
