@@ -15,7 +15,7 @@ router.post('/',function(req, res) {
       }
     else if(typeof asin ==='undefined' &&  typeof group==='undefined')
       {
-           var queryString="SELECT asin,productName FROM products WHERE match (productName,productDescription) against ('"+keyword+"')";
+           var queryString="SELECT asin,productName FROM products WHERE MATCH (productName, productDescription) against ('\"+"+keyword+"\"' in boolean mode)";
       }
     else if(typeof keyword ==='undefined' &&  typeof group==='undefined')
         {
@@ -27,7 +27,7 @@ router.post('/',function(req, res) {
             }
     else if(typeof asin === 'undefined')
         {
-             var queryString="SELECT asin,productName FROM products WHERE match (productName,productDescription) against ('"+keyword+"') AND groups="+ mysql.escape(group)+"";
+             var queryString="SELECT asin,productName FROM products WHERE match (productName,productDescription) against ('\"+"+keyword+"\"' in boolean mode) AND groups="+ mysql.escape(group)+"";
         }
     else if(typeof keyword==='undefined')
         {
@@ -36,11 +36,11 @@ router.post('/',function(req, res) {
         }
     else if(typeof group === 'undefined' )
         {
-                 var queryString="SELECT asin,productName FROM products WHERE match (productName,productDescription) against ('"+keyword+"')";
+                 var queryString="SELECT asin,productName FROM products WHERE match (productName,productDescription) against ('\"+"+keyword+"\"' in boolean mode)";
         }
     else
         {
-          var queryString = "SELECT asin,productName FROM products WHERE asin="+ mysql.escape(asin)+" AND match (productName,productDescription) against ('"+keyword+"') AND groups="+ mysql.escape(group)+"";
+          var queryString = "SELECT asin,productName FROM products WHERE asin="+ mysql.escape(asin)+" AND match (productName,productDescription) against ('\"+"+keyword+"\"' in boolean mode) AND groups="+ mysql.escape(group)+"";
         }
     console.log(queryString);
     readPool.getConnection(function(err, dbconnect){
