@@ -50,6 +50,7 @@ app.use('/getRecommendations',getRecommendations);
 	//res.writeHead(200);
 //}).listen(3000);
 
+const server = http.createServer(app);
 server.listen(3000, function listening() {
   console.log('Listening on %d', server.address().port);
 });
