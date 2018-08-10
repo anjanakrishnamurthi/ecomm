@@ -45,12 +45,11 @@ app.use('/productsPurchased',productsPurchased);
 app.use('/getRecommendations',getRecommendations);
 
 
-const server = http.createServer(app);
- server.listen(3000, function listening() {
-  console.log('Listening on %d', server.address().port);
-  res.writeHead(200);
-	 res.end();
-});
+require('http').createServer(function(req,res){
+	console.log("I am listening at 3000")
+	res.writeHead(200);
+	res.end();
+}).listen(3000);
 
 app.get('/', function(req, res) {
     res.render('login');
