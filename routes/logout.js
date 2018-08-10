@@ -5,7 +5,7 @@ router.post('/',function(req, res) {
 
   if(req.session.username)
 	{
-		req.session.destroy();
+		req.session=null;
 	   res.json({'message':'You have been successfully logged out'});
 	}
 	else
