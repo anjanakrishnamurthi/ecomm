@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var session=require('express-session');
+var session=require('client-sessions');
 var http=require('http');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
