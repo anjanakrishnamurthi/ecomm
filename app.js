@@ -31,7 +31,7 @@ app.use(session({
   cookie:{maxAge: 90000}
 }))
 
-app.set('view engine', 'ejs');
+//app.set('view engine', 'ejs');
 
 app.use('/',healthCheck);
 app.use('/login', login);
