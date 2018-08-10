@@ -51,16 +51,6 @@ app.use('/getRecommendations',getRecommendations);
 //}).listen(3000);
 
 
-const server = http.createServer(app,function(req,res){
-console.log("I am listening at 3000");
-listening(req,res);
-}).listen(3000);
-
-function listening(req,res)
-{
-	res.writeHead(200);
-}
-
 console.log("Iam here");
 app.get('/', function(req, res) {
     res.render('login');
