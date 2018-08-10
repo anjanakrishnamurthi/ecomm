@@ -47,9 +47,10 @@ app.use('/getRecommendations',getRecommendations);
 
 require('http').createServer(function(req,res){
 	console.log("I am listening at 3000")
-	res.send(200);
+	res.writeHead(200);
 }).listen(3000);
 
+console.log("Iam here");
 app.get('/', function(req, res) {
     res.render('login');
 });
