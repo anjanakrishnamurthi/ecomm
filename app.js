@@ -47,7 +47,6 @@ app.use('/getRecommendations',getRecommendations);
 
 
 app.get('/sendecho.html', function (req, res) {
-	console.log("I am here");
   res.send(200);
   res.end();
 });
