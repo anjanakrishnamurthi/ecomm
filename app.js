@@ -10,7 +10,7 @@ var responseTime = require('response-time');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-var healthCheck= require('./routes/healthCheck.js');
+//var healthCheck= require('./routes/healthCheck.js');
 var login = require('./routes/login');
 var registerUser = require('./routes/register');
 var logout = require('./routes/logout');
@@ -33,7 +33,7 @@ app.use(session({
 
 //app.set('view engine', 'ejs');
 
-app.use('/',healthCheck);
+//app.use('/',healthCheck);
 app.use('/login', login);
 app.use('/registerUser',registerUser);
 app.use('/logout',logout);
@@ -52,13 +52,17 @@ app.use('/getRecommendations',getRecommendations);
 	//res.writeHead(200);
 //}).listen(3000);
 
+app.get('/sendecho.html', function (req, res) {
+	console.log("I am here");
+  res.send(200);
+  res.end();
+});
+
 const server = http.createServer(app);
 server.listen(3000, function listening(req,res) {
-  res.writeHead(200);
   console.log('Listening on %d', server.address().port);
 });
 
-console.log("Iam here");
 app.get('/', function(req, res) {
     res.render('login');
 });
