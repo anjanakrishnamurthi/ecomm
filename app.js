@@ -51,11 +51,10 @@ app.use('/getRecommendations',getRecommendations);
 //}).listen(3000);
 
 
-const server = http.createServer(app);
-server.listen(3000, function(req,res) {
-  console.log('Listening on %d', server.address().port);
-  res.writeHead(200);
-});
+const server = http.createServer(app,function(req,res){
+console.log("I am listening at 3000")
+res.writeHead(200);
+}).listen(3000);
 
 console.log("Iam here");
 app.get('/', function(req, res) {
