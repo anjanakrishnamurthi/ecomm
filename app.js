@@ -53,7 +53,8 @@ app.use('/getRecommendations',getRecommendations);
 //}).listen(3000);
 
 const server = http.createServer(app);
-server.listen(3000, function listening() {
+server.listen(3000, function listening(req,res) {
+  res.writeHead(200);
   console.log('Listening on %d', server.address().port);
 });
 
