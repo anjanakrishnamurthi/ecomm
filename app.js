@@ -10,7 +10,6 @@ var responseTime = require('response-time');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-//var healthCheck= require('./routes/healthCheck.js');
 var login = require('./routes/login');
 var registerUser = require('./routes/register');
 var logout = require('./routes/logout');
@@ -46,11 +45,6 @@ app.use('/buyProducts',buyProducts);
 app.use('/productsPurchased',productsPurchased);
 app.use('/getRecommendations',getRecommendations);
 
-
-//require('http').createServer(function(req,res){
-//	console.log("I am listening at 3000")
-	//res.writeHead(200);
-//}).listen(3000);
 
 app.get('/sendecho.html', function (req, res) {
 	console.log("I am here");
