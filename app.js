@@ -54,7 +54,7 @@ app.use('/getRecommendations',getRecommendations);
 const server = http.createServer(app);
 server.listen(3000, function(req,res) {
   console.log('Listening on %d', server.address().port);
-  //res.writeHead(200);
+  res.writeHead(200);
 });
 
 console.log("Iam here");
