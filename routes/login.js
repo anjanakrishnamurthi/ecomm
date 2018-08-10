@@ -6,7 +6,7 @@ var readPool=require('./readPool.js');
 var app = express();
 
 router.post('/',function(req, res) {
-
+console.log(req.session.username);
 var parameters  = [req.body.username, req.body.password];
 readPool.getConnection(function(err, dbconnect){
  dbconnect.query('select * from login where username=? and password=?',parameters,function(err, rows){
