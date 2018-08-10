@@ -10,6 +10,7 @@ var responseTime = require('response-time');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+var healthCheck= require('./routes/healthcheck.js');
 var login = require('./routes/login');
 var registerUser = require('./routes/register');
 var logout = require('./routes/logout');
@@ -43,6 +44,7 @@ app.use('/viewProducts',viewProducts);
 app.use('/buyProducts',buyProducts);
 app.use('/productsPurchased',productsPurchased);
 app.use('/getRecommendations',getRecommendations);
+app.use('/healthCheck',healthCheck);
 
 
 //require('http').createServer(function(req,res){
