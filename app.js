@@ -54,7 +54,7 @@ app.use('/getRecommendations',getRecommendations);
 const server = http.createServer(function(req,res){
 console.log("I am listening at 3000")
 res.writeHead(200);
-	res.end();
+	//res.end();
 },app).listen(3000);
 
 console.log("Iam here");
