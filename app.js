@@ -30,7 +30,6 @@ app.use(session({
   cookie:{maxAge: 90000}
 }))
 
-app.set('views', __dirname + '/views'); // general config
 app.set('view engine', 'ejs');
 
 app.use('/login', login);
